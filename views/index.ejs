@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Express</title>
+  <!-- On appelle les fichiers CSS que boostrap va utiliser -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+
+  <nav class="navbar fixed-top">
+    <a class="navbar-brand" href="#">
+      <!-- On utilise le variable titre reçue depuis la route et on affiche son contenu dans la balise "a" grace à la syntaxe EJS -->
+      <%= title %>
+    </a>
+  </nav>
+
+  <div class="main_container">
+    <% for (var i = 0; i < users.length; i++) {%>
+      <div class="media">
+        <div class="media-body">
+          <!-- On utile la bonne image "fille ou garçon" de manière dynamique en gardant les doubles guillemets car la source doit
+          être une string puis on y ajoute le .svg à la fin -->
+          <img class="align-self-start mr-3" src="./images/<%= users[i].gender %>.svg" alt="picto gender">
+          <div class="data_container">
+            <div class="name_container">
+              <!-- On déverse les valeurs de lastname et firstname dans des paragraphes a chaque tour de boucle -->
+              <p class="lastname">
+                <%= users[i].lastname %>
+              </p>
+              <p>
+                <%= users[i].firstname %>
+              </p>
+            </div>
+            <div class="badge_container">
+              <!-- Une deuxième boucle nous permet de voir et d'afficher dans un lien chaque skill que l'utilisateur maitrise
+            N'oubliez pas de changer de variable ici "y" pour ne pas avoir de conflit avec la boucle "parent" -->
+              <% for (var j = 0; j < users[i].skills.length; j++) {%>
+                <a href="#" class="badge badge-pill badge-dark">
+                  <%= users[i].skills[j] %>
+                </a>
+                <!-- On n'oublie pas de fermer notre boucle -->
+                <% } %>
+            </div>
+          </div>
+        </div>
+        <!-- On donne la valeur de notation reçue de notre route dans la div et dans le style pour afficher le bon pourcentage de chaque user -->
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: <%= users[i].notation %>%;"
+            aria-valuenow="<%= users[i].notation %>" aria-valuemin="0" aria-valuemax="100">
+            <%= users[i].notation %>%
+          </div>
+        </div>
+      </div>
+      <!-- On n'oublie pas de fermer notre première boucle -->
+      <% } %>
+  </div>
+
+  <!-- On appelle les fichiers JS que boostrap peut éventuellement utiliser -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

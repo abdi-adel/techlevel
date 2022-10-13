@@ -1,0 +1,76 @@
+body {
+  background: linear-gradient(to right, #5f2c82, #49a09d);
+}
+
+/* HEADER */
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: #1d1919;
+}
+.navbar a{
+  font-size: 25px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+/* BODY */
+img {
+  width: 30px;
+  margin-top: 15px;
+}
+
+.lastname{
+  margin-right:10px;
+}
+
+.main_container {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+p{
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 0px;
+  font-size: 20px;
+  color: #fff;
+}
+.badge{
+  font-family: 'Roboto', sans-serif;
+}
+
+.name_container{
+  display: flex;
+}
+
+.progress{
+  width: 100%;
+}
+
+.media{
+  width: 51vw;
+  display: flex;
+  flex-direction:column;
+  padding: 15px;
+}
+
+.media-body{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.data_container{
+  display: flex;
+  flex-direction:column;
+  padding: 7px;
+}
+
+/* responsive design */
+@media only screen and (max-width: 700px) {
+  .media{
+    width: 100vw;
+  }
+}
